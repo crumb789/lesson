@@ -1,0 +1,11 @@
+.btn{
+    &-danger{
+        background-color: #53687E;
+        margin-top: 20px;
+        border-color:#53687E;
+        &:hover{
+            background-color: #53687E;
+            border-color:#53687E;
+        }
+    }
+}

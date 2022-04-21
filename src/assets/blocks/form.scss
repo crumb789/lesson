@@ -1,0 +1,96 @@
+.form{
+    &-check{
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
+        width: 20px;
+        height: 20px;
+        background-color: var(--bs-teal);
+        border-radius: 100%;
+        cursor: pointer;
+        i{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-13px, -18px);
+            font-size: 26px;
+            color: $dark-blue;
+        }
+    }
+    &-descr{
+        position: absolute;
+        bottom: 15px;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        // color: var(--bs-yellow);
+        cursor: pointer;
+        font-size: 22px;
+        i{
+            &::before{
+               
+            }
+        }
+    }
+    &-remove{
+        height: 3px;
+        width: 20px;
+        background-color: var(--bs-red);
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+    }
+}
+.checkDone{
+    background-color: $done-color;
+    color: $dark-blue;
+}
+.card{
+    &-body{
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-95%, -231%);
+    form{
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        row-gap: 10px;
+        background:var(--bs-gray-200);
+        padding: 15px;
+        // left: 50%;
+        // transform: translateX(-50%);
+        input{
+            border-radius: 6px;
+            padding-left: 5px;
+        }
+    }
+    }
+    &-title{
+        color: var(--bs-gray-100);
+    }
+}
+.btn-close{
+    position: absolute;
+    top: -35px;
+    right: 0;
+    background-color: #fff;
+    &.descr{
+        top: 10px;
+        right: 10px;
+    }
+    
+}
+.btn-done{
+    background-color: transparent;
+    border: none;
+    i{
+        font-size: 25px;
+        ::before{
+            color:aqua;
+        }
+    }
+}

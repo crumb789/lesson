@@ -1,0 +1,32 @@
+.table{
+    &-days{
+        display: block;
+        overflow: auto;
+        color: #2c3e50;
+        width: 150px;
+        border:1px solid #000
+        
+    }
+    &-ul{
+        list-style: none;
+        li{
+            border: 1px solid #000;
+            width: 100%;
+        }
+    }
+    &-success{
+        background-color: var(--bs-teal);
+    }
+}
+.tab{
+    &-success{
+        background-color: var(--bs-teal);
+    }
+}
+.wrapper{
+    display: flex;
+    overflow: auto;
+    column-gap: 15px;
+    font-weight: 700;
+    margin-top: 25px;
+}

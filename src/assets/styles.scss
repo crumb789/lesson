@@ -1,0 +1,17 @@
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+
+@import '@/assets/variables/variables.scss';
+@import '@/assets/blocks/table.scss';
+@import '@/assets/blocks/box.scss';
+@import '@/assets/blocks/form.scss';
+@import '@/assets/blocks/week.scss';
+@import '@/assets/blocks/buttons.scss';
+@import '@/assets/blocks/modal.scss';
+
+
+
+body{
+    background-color: var(--bs-secondary-rgb)
+}
+
