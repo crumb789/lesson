@@ -11,6 +11,7 @@
         justify-content: space-around;
     }
     &-salary{
+        position: relative;
         display: flex;
         align-items: center;
         column-gap: 20px;
@@ -18,4 +19,23 @@
             font-weight: 700;
         }
     }
+    &-token{
+        position: absolute;
+        z-index: 0;
+        color: $dark-blue;
+        transition: 0.5s all;
+        width: 0px;
+        
+    }
+    &-wallet{
+        z-index: 1;
+        background-color: #ffc107;
+    }
+    
+}
+.hover{
+    left: 5px;
+    transition: 0.5s all;
+    color: $dark-blue;
+    width: 60px;
 }

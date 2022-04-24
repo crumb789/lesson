@@ -37,15 +37,22 @@
 
         </add-student>
 
-        <div class="week-wrapper" v-if="!wallet" @click="wallet = !wallet">
+        <div class="week-wrapper" v-if="!wallet" @click="walletChange">
             <div class="week-salary" style="font-size: 30px; cursor: pointer">
-               <i class="bi bi-wallet2"></i>
+               <i @mouseenter="coin = true" @mouseout="coin = false" 
+                class="bi bi-wallet2 week-wallet">
+               </i>
+               <i  class="bi bi-coin week-token" :class="{hover: coin === true}">
+
+               </i>
             </div>
         </div>
         <div class="week-wrapper" v-if="wallet">
             <div class="week-salary">
-              <i @click="wallet = !wallet"
-                    class="bi bi-arrow-left" style="font-size: 30px; cursor: pointer" ></i>
+                <i @click="wallet = !wallet"
+                    class="bi bi-arrow-left" style="font-size: 30px; cursor: pointer" >
+                </i>
+                
                 <span>{{sumSalary + ' rub'}}</span>
             </div>
             <button @click="clearSumSalary"
@@ -82,6 +89,7 @@ export default {
             editLesson: false,
             wallet:false,
             Sum: [],
+            coin: false,
             week: [
                 {
                     "id": "1",
@@ -122,6 +130,12 @@ export default {
     },
        
     methods:{
+        walletChange(){
+            setTimeout(() => {
+                this.wallet = !this.wallet
+                this.coin = false
+            }, 500)
+        },
         closeFormAddStudent(){
             this.showForm = false
         },
