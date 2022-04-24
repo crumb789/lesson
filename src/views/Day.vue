@@ -14,8 +14,9 @@
             :editLesson="editLesson"
             @cost-push="costPush"
             @cost-remove="costRemove"
-            @remove-lesson="removeLesson"> 
-
+            @remove-lesson="removeLesson"
+            @move-item-up="moveItemUp"
+            @move-item-down="moveItemDown"> 
             </list-days>
 
             <div class="lessons-edit" @click="editLesson = !editLesson" v-if="!editLesson">
@@ -52,6 +53,7 @@
                 Clear
             </button>
         </div>
+
 
 
     </div>
@@ -115,21 +117,24 @@ export default {
                     "day":"Sunday",
 
                 },
-            ]
+            ],
         }
     },
+       
     methods:{
         closeFormAddStudent(){
             this.showForm = false
         },
         submettedLesson(newLesson){
             this.lessons.push(newLesson)
-            console.log(this.lessons)
             this.showForm = false
         },
         costPush(les){
             this.salary.push(les.cost)
+            // this.Sum.push(les.cost)
+            // console.log(this.salary[0][1])
             this.sumSalary = this.salary.reduce((item, sum) => sum + item, 0)
+            
 
         },
         removeLesson(les){
@@ -146,7 +151,27 @@ export default {
             this.lessons.forEach((item) => {
              return item.done = false
             });
+        },
+
+        moveItemUp(les){
+            let indexLes = this.lessons.indexOf(les)
+
+            let indexLesPrev = indexLes - 1
+
+            if ((indexLes !== -1 && indexLesPrev !== -1) ) {
+                [ this.lessons[indexLes], this.lessons[indexLesPrev] ] = [ this.lessons[indexLesPrev], this.lessons[indexLes] ];
+            } else indexLes = 0            
+        },
+        moveItemDown(les){
+            let indexLes = this.lessons.indexOf(les)
+
+            let indexLesPrev = indexLes  + 1
+
+            if (indexLes !== this.lessons.length   && indexLesPrev !== this.lessons.length ) {
+                [ this.lessons[indexLes], this.lessons[indexLesPrev] ] = [ this.lessons[indexLesPrev], this.lessons[indexLes] ];
+            }
         }
+
     },
     mounted(){
         if(localStorage.lessons){

@@ -1,6 +1,13 @@
 <template>
     <div>
-        <div class="table table-days">{{item.day }}</div>
+        <div class="table table-days" 
+            :class="{red: item.id === '1', 
+                    yellow: item.id === '2',
+                    orange: item.id === '3',
+                    green: item.id === '4',
+                    blueLigth: item.id === '5',
+                    blue: item.id === '6',
+                    purple: item.id === '7'}">{{item.day }}</div>
         
         <list-item @click="clickLesson = !clickLesson"
                     v-for="les in lessons" :key="les.id"
@@ -12,7 +19,10 @@
                         <div class="lesson-name">{{les.name}}</div>
                         <div class="lesson-time">{{les.time}}</div>
                         <div class="lesson-cost">{{les.cost + ' rub'}}</div>
-                        <div class="lesson-descr" v-if="les.descr"><span>Description: </span>{{les.description}}</div>
+                        <div class="lesson-descr" v-if="les.descr">
+                            <span>Description: </span>
+                            {{les.description}}
+                        </div>
                         <form @submit.prevent="submitDescr(les)" v-if="les.descr">
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-sm">Description</span>
@@ -32,6 +42,23 @@
                             v-if="editLesson">
                             
                         </div>
+                        <div class="arrows-move" v-if="editLesson && lessons.length > 1">
+                            <div class="form-replace-up" 
+                                 @click="$emit('move-item-up',les)">
+                                
+                                <i class="bi bi-arrow-up"></i>
+                            </div>
+                            
+                            <div class="form-replace-down" 
+                                    
+                                    @click="$emit('move-item-down',les)">
+                                <i class="bi bi-arrow-down"></i>
+                            </div>
+                        </div>
+
+
+
+
                         <div class="form-descr" @click="les.descr = !les.descr"
                             v-if="!editLesson">
                             <i class="bi bi-chat-left-quote"></i>
@@ -39,6 +66,7 @@
                         <button @click="les.descr = !les.descr" v-if="les.descr === true"
                             type="button" class="btn-close descr" aria-label="Close">
                         </button>
+                        
                 </div>
         </list-item>
         <slot>
@@ -78,7 +106,12 @@ export default {
         submitDescr(les){
             les.description = this.newDescr
             this.newDescr = ''
-        }
+        },
+        // moveItem(les,index){
+        //     console.log(index)
+        //     index = index - 1
+        //     console.log(index)
+        // }
     }
 }
 </script>
