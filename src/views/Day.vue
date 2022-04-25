@@ -40,7 +40,8 @@
             @cost-remove="costRemove"
             @remove-lesson="removeLesson"
             @move-item-up="moveItemUp"
-            @move-item-down="moveItemDown"> 
+            @move-item-down="moveItemDown"
+            @change-day="changeDay"> 
             </list-days>
 
             
@@ -58,7 +59,7 @@
 
         <div class="week-wrapper" v-if="!wallet" @click="walletChange">
             <div class="week-salary" style="font-size: 30px; cursor: pointer">
-               <i @mouseenter="coin = true" @mouseout="coin = false" 
+               <i @click="coin = !coin" 
                 class="bi bi-wallet2 week-wallet">
                </i>
                <i  class="bi bi-cash week-token" :class="{hover: coin === true}">
@@ -104,7 +105,7 @@ export default {
             showForm: false,
             lessons: [],
             salary: [],
-            sumSalary: 0,
+            // sumSalary: 0,
             editLesson: false,
             wallet:false,
             Sum: [],
@@ -162,12 +163,18 @@ export default {
             this.lessons.push(newLesson)
             this.showForm = false
         },
+        changeDay(index,newDay){
+            console.log(index)
+            console.log(newDay)
+
+            this.lessons[index].day = String(newDay)
+        },
         costPush(les){
             this.salary.push(les.cost)
             // this.Sum.push(les.cost)
             // console.log(this.salary[0][1])
             this.sumSalary = this.salary.reduce((item, sum) => sum + item, 0)
-            
+            // console.log(les)
 
         },
         removeLesson(les){
@@ -176,6 +183,7 @@ export default {
         costRemove(les){
             this.salary = this.salary.filter(item => item != les.cost)
             this.sumSalary = this.salary.reduce((item, sum) => sum + item, 0)
+            // console.log(les)
             
         },
         clearSumSalary(les){
@@ -218,7 +226,16 @@ export default {
         // `this` указывает на экземпляр vm
 
             return (result === this.lessons.length) ? 100 : max + result
-        }
+        },
+
+        // sumSalary(){
+        //      this.lessons.forEach((item) => {
+        //         ( item.done ) ? this.salary.push(item.cost) : false
+        //     })
+        //     console.log(this.salary)
+        //     return  this.salary.reduce((item, sum) => sum + item, 0)
+            
+        // }
     },
     mounted(){
         if(localStorage.lessons){

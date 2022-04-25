@@ -1,5 +1,5 @@
 <template>
-    <div class="card text-center form-add-student" >
+    <div class=" form-add-student" >
         <div class="form-wrapper">
             <div class="card-body">
         <h5 class="card-title">New student</h5>

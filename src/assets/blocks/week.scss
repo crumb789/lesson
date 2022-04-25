@@ -1,4 +1,5 @@
 .week{
+    transition: 0.5s all;
     &-wrapper{
         position: fixed;
         background-color: $yellow-bar;
@@ -10,12 +11,14 @@
         align-items: center;
         justify-content: space-around;
         border-radius:  5px 5px 0 0;
+        transition: 0.5s all;
     }
     &-salary{
         position: relative;
         display: flex;
         align-items: center;
         column-gap: 20px;
+        transition: 0.5s all;
         span{
             font-weight: 700;
         }
@@ -31,6 +34,12 @@
     &-wallet{
         z-index: 1;
         background-color: #ffc107;
+        &:active{
+            border: 0.5px solid $dark-blue;
+            border-radius: 3px;
+            width: 50px;
+            box-shadow:inset 2px 2px 2px #fdd663, 2px 2px 1px #fdd663;
+        }
     }
     
 }
@@ -38,5 +47,5 @@
     left: 5px;
     transition: 0.5s all;
     color: var(--bs-green);
-    width: 60px;
+    width: 55px;
 }
