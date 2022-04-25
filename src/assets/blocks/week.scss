@@ -9,6 +9,7 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
+        border-radius:  5px 5px 0 0;
     }
     &-salary{
         position: relative;
@@ -25,7 +26,7 @@
         color: $dark-blue;
         transition: 0.5s all;
         width: 0px;
-        
+        color: green;
     }
     &-wallet{
         z-index: 1;
@@ -36,6 +37,6 @@
 .hover{
     left: 5px;
     transition: 0.5s all;
-    color: $dark-blue;
+    color: var(--bs-green);
     width: 60px;
 }

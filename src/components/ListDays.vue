@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="wrapper-table">
         <div class="table table-days" 
             :class="{red: item.id === '1', 
                     yellow: item.id === '2',
                     orange: item.id === '3',
                     green: item.id === '4',
-                    blueLigth: item.id === '5',
+                    blueLight: item.id === '5',
                     blue: item.id === '6',
                     purple: item.id === '7'}">{{item.day }}</div>
         

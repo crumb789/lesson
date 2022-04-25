@@ -1,11 +1,10 @@
 .btn{
-    &-danger{
-        background-color: #53687E;
-        margin-top: 20px;
-        border-color:#53687E;
+    &-add{
+        // background-color: #53687E;
+        width: 24px;
+        font-size: 24px;
         &:hover{
-            background-color: #53687E;
-            border-color:#53687E;
+            // background-color: #53687E;
         }
     }
 }

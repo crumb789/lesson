@@ -1,11 +1,11 @@
 .table{
+    position: relative;
     &-days{
         display: block;
         overflow: auto;
         // color: #2c3e50;
         width: 150px;
-        border:1px solid #000
-        
+        border:1px solid #000;
     }
     &-ul{
         list-style: none;

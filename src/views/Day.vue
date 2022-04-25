@@ -1,11 +1,35 @@
 <template>
     <div class="container-sm">
         
-        <button @click="showForm = !showForm"
-            :disabled="editLesson"
-            type="button" class="btn btn-danger">
-                Add student
-         </button>
+        <div class="header">
+            <div class="header-wrapper">
+                <div :class="{toggleActive: editLesson}"
+                class="lessons-toggle">
+                    <div :class="{editActive: editLesson}" class="lessons-toggle_btn" >
+                    <div class="lessons-edit" @click="editLesson = !editLesson" >
+                        <i class="bi bi-pencil" v-if="!editLesson"></i>
+                        <i class="bi bi-caret-right-fill" v-else></i>
+                    </div>
+                    </div>
+                </div>
+
+                <h1>
+                    <div :style="{width: widthDivider + '%'}" class="divider"></div>
+                    {{mainHeader}}
+                </h1>
+
+                <div @click="showForm = !showForm"
+                    v-if="!editLesson"
+                    class=" btn-add">
+                    <i class="bi bi-file-plus">
+                    </i>
+                </div>
+                <div @click="showForm = !showForm"
+                    v-if="editLesson"
+                    class=" btn-add">
+                </div>
+            </div>
+        </div>
 
         <div class="wrapper">
             <list-days v-for="item in week" :key="item.id"
@@ -19,12 +43,7 @@
             @move-item-down="moveItemDown"> 
             </list-days>
 
-            <div class="lessons-edit" @click="editLesson = !editLesson" v-if="!editLesson">
-                <i class="bi bi-pencil"></i>
-            </div>
-            <div class="lessons-edit" @click="editLesson = !editLesson" v-if="editLesson">
-                <i class="bi bi-check-circle-fill"></i>
-            </div>
+            
 
 
         </div>
@@ -42,7 +61,7 @@
                <i @mouseenter="coin = true" @mouseout="coin = false" 
                 class="bi bi-wallet2 week-wallet">
                </i>
-               <i  class="bi bi-coin week-token" :class="{hover: coin === true}">
+               <i  class="bi bi-cash week-token" :class="{hover: coin === true}">
 
                </i>
             </div>
@@ -60,7 +79,6 @@
                 Clear
             </button>
         </div>
-
 
 
     </div>
@@ -81,6 +99,7 @@ export default {
      },
     data() {
         return{
+            mainHeader:'Lesson',
             selectedTab: undefined,
             showForm: false,
             lessons: [],
@@ -134,7 +153,7 @@ export default {
             setTimeout(() => {
                 this.wallet = !this.wallet
                 this.coin = false
-            }, 500)
+            }, 1000)
         },
         closeFormAddStudent(){
             this.showForm = false
@@ -186,6 +205,20 @@ export default {
             }
         }
 
+    },
+    computed: {
+        widthDivider() {
+            let max = []
+            let current = []
+            this.lessons.forEach((item) => {
+                (item.done) ? current.push(1) : max = this.lessons.length
+            })
+            let result = current.reduce((item, sum) => sum + item, 0)
+            // let width = max.reduce((item, sum) => sum + item, 0)
+        // `this` указывает на экземпляр vm
+
+            return (result === this.lessons.length) ? 100 : max + result
+        }
     },
     mounted(){
         if(localStorage.lessons){
