@@ -15,7 +15,16 @@
                     :lessons="lessons">
                     <div v-if="item.id == les.day"
                          class="box-item"                     
-                        :class="{checkDone: les.done === true, edit: editLesson === true, description: les.descr === true}">
+                        :class="{checkDone: les.done === true,
+                                 edit: editLesson === true, 
+                                 description: les.descr === true,
+                                 red: item.id === '1', 
+                                yellow: item.id === '2',
+                                orange: item.id === '3',
+                                green: item.id === '4',
+                                blueLight: item.id === '5',
+                                blue: item.id === '6',
+                                purple: item.id === '7'}">
                         <div class="lesson-name">{{les.name}}</div>
                         <div :class="{redText:item.id == les.day  }"
                         class="lesson-time">
