@@ -5,8 +5,8 @@
         <h5 class="card-title">New student</h5>
 
         <form @submit.prevent="onSubmit">
-            <input v-model="nameStudent" class="form-control" placeholder="Name student" required>
-            <input v-model="costStudent" type="number" class="form-control" placeholder="The cost of the lesson" required>
+            <input v-model="nameStudent" class="form-control" placeholder="Student name" required>
+            <input v-model="costStudent" type="number" class="form-control" placeholder="Price" required>
             <div class="wrapper-select">
                 <select id="daySelect" v-model="daySelect" class="form-select " aria-label="Default select example" required>
                 <option value="1">Monday</option>
@@ -19,7 +19,7 @@
             </select>
                 <label for="daySelect" v-if="daySelect === null">Select day</label>
             </div>
-            <input v-model="description" class="form-control" placeholder="Description( not requared)" >
+            <input v-model="description" class="form-control" placeholder="Description (not requared)" >
             <input type="time" class="form-control" v-model="timeLesson" required>
             <button 
                 @click="showForm = !showForm"

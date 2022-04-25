@@ -105,7 +105,7 @@ export default {
             showForm: false,
             lessons: [],
             salary: [],
-            // sumSalary: 0,
+            sumSalary: 0,
             editLesson: false,
             wallet:false,
             Sum: [],
