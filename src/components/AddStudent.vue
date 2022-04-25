@@ -5,8 +5,8 @@
         <h5 class="card-title">New student</h5>
 
         <form @submit.prevent="onSubmit">
-            <input v-model="nameStudent" class="form-control" placeholder="Student name" required>
-            <input v-model="costStudent" type="number" class="form-control" placeholder="Price" required>
+            <input v-model="nameStudent" type="text" minlength="2" v-on:keypress="isLetter($event)" class="form-control" placeholder="Student name" maxlength="10" required>
+            <input v-model.number="costStudent" min="1" v-on:keypress="isLetterOrNumber($event)" type="number" class="form-control" placeholder="Price" required>
             <div class="wrapper-select">
                 <select id="daySelect" v-model="daySelect" class="form-select " aria-label="Default select example" required>
                 <option value="1">Monday</option>
@@ -56,6 +56,7 @@ export default {
     },
     methods:{
         onSubmit(){
+            this.costStudent = this.isLetter
             const newLesson = {
                 id: this.lessons.length + 1,
                 name: this.nameStudent,
@@ -73,6 +74,21 @@ export default {
             this.daySelect = null
             this.timeLesson = null
 
+        },
+        isLetterOrNumber(e){
+            let char = String.fromCharCode(e.keyCode);
+            if (/^[A-Za-z0-9]+$/.test(char)) return true;
+            else e.preventDefault();
+        },
+    },
+    computed: {
+        isLetter(){
+            let a = this.nameStudent.split('')
+            let b = []
+            a.forEach(item => {
+                (item != Number(item)) ? b.push(item) : false
+            })
+            return b.join('')
         }
     }
 }

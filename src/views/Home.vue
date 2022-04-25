@@ -224,8 +224,8 @@ export default {
             let result = current.reduce((item, sum) => sum + item, 0)
             // let width = max.reduce((item, sum) => sum + item, 0)
         // `this` указывает на экземпляр vm
-
-            return (result === this.lessons.length) ? 100 : max + result
+            let procent = 100 / (max / result)
+            return (result === this.lessons.length) ? 100 : procent
         },
 
         // sumSalary(){
