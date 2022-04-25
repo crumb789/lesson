@@ -41,6 +41,9 @@
         color: #2a1059;
         cursor: pointer;
         transition: 0.5s all;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 .toggleActive{
