@@ -100,7 +100,7 @@ export default {
      },
     data() {
         return{
-            mainHeader:'Lesson',
+            mainHeader:'Lesson T',
             selectedTab: undefined,
             showForm: false,
             lessons: [],
