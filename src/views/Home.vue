@@ -164,6 +164,9 @@ export default {
             this.showForm = false
         },
         changeDay(index,newDay){
+            console.log(index)
+            console.log(newDay)
+
             this.lessons[index].day = String(newDay)
         },
         costPush(les){
