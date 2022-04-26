@@ -14,7 +14,7 @@
                 </div>
 
                 <h1>
-                    <div :style="{width: widthDivider + '%'}" class="divider"></div>
+                    <div :style="{width: widthDivider + '%', dividerDone: widthDivider === 100}" class="divider"></div>
                     {{mainHeader}}
                 </h1>
 

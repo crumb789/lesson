@@ -5,7 +5,7 @@
         <h5 class="card-title">New student</h5>
 
         <form @submit.prevent="onSubmit">
-            <input v-model="nameStudent" type="text" minlength="2" v-on:keypress="isLetter($event)" class="form-control" placeholder="Student name" maxlength="10" required>
+            <input v-model="nameStudent" type="text" minlength="2" class="form-control" placeholder="Student name" maxlength="10" required>
             <input v-model.number="costStudent" min="1" v-on:keypress="isLetterOrNumber($event)" type="number" class="form-control" placeholder="Price" required>
             <div class="wrapper-select">
                 <select id="daySelect" v-model="daySelect" class="form-select " aria-label="Default select example" required>
@@ -56,7 +56,6 @@ export default {
     },
     methods:{
         onSubmit(){
-            this.costStudent = this.isLetter
             const newLesson = {
                 id: this.lessons.length + 1,
                 name: this.nameStudent,
