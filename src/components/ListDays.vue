@@ -26,11 +26,22 @@
                                 blue: item.id === '6',
                                 purple: item.id === '7'}">
                         <div class="lesson-name">{{les.name}}</div>
-                        <div :class="{redText:item.id == les.day  }"
-                        class="lesson-time">
+
+                        <div class="lesson-time"><!-- ////////////////time -->
                             {{les.time}}
+                            <i style="cursor:pointer" class="bi bi-pencil" @click="timeEdit = !timeEdit"
+                                v-if="les.descr">
+                            </i>
                         </div>
-                        <div class="lesson-cost">{{les.cost + ' rub'}}</div>
+                        <div class="lesson-time" v-if="les.descr && timeEdit">
+                            <form @submit.prevent="changeTime(index)" class="form-time-change">
+                                <input type="time" class="form-control" v-model="newTimeLesson">
+                                <button  class="btn-done "><i class="bi bi-check-square"></i></button>
+                            </form>
+                        </div> <!-- //////////////time -->
+
+
+                        <div class="lesson-cost" v-if="les.cost">{{les.cost + ' rub'}}</div>
                         <div class="lesson-descr" v-if="les.descr">
                             <span>Description: </span>
                             {{les.description}}
@@ -122,7 +133,9 @@ export default {
         return{
             descr: false,
             newDescr: undefined,
-            changeDay: null
+            changeDay: null,
+            newTimeLesson: null,
+            timeEdit: false
         }
     },
     methods:{
@@ -139,6 +152,12 @@ export default {
             const newDay = this.changeDay
             this.$emit('change-day', index, newDay)
             this.changeDay = null
+        },
+        changeTime(index){
+            const newTime = this.newTimeLesson
+            this.$emit('change-time-submit', newTime, index)
+            this.newTimeLesson = null
+            this.timeEdit = false
         }
         // moveItem(les,index){
         //     console.log(index)

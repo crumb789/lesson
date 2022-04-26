@@ -41,7 +41,8 @@
             @remove-lesson="removeLesson"
             @move-item-up="moveItemUp"
             @move-item-down="moveItemDown"
-            @change-day="changeDay"> 
+            @change-day="changeDay"
+            @change-time-submit="changeTimeSubmit"> 
             </list-days>
 
             
@@ -164,10 +165,11 @@ export default {
             this.showForm = false
         },
         changeDay(index,newDay){
-            console.log(index)
-            console.log(newDay)
 
             this.lessons[index].day = String(newDay)
+        },
+        changeTimeSubmit(newTime, index){
+            (newTime === null) ? false : this.lessons[index].time = String(newTime)
         },
         costPush(les){
             this.salary.push(les.cost)

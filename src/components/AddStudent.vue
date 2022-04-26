@@ -6,7 +6,7 @@
 
         <form @submit.prevent="onSubmit">
             <input v-model="nameStudent" type="text" minlength="2" class="form-control" placeholder="Student name" maxlength="10" required>
-            <input v-model.number="costStudent" min="1" v-on:keypress="isLetterOrNumber($event)" type="number" class="form-control" placeholder="Price" required>
+            <input v-model.number="costStudent" min="1" v-on:keypress="isLetterOrNumber($event)" type="number" class="form-control" placeholder="Price" >
             <div class="wrapper-select">
                 <select id="daySelect" v-model="daySelect" class="form-select " aria-label="Default select example" required>
                 <option value="1">Monday</option>
@@ -27,7 +27,7 @@
                     submit
             </button>
             <button @click="$emit('close-form-addStudent')"
-                type="button" class="btn-close" aria-label="Close">
+                type="button" style="background-color: white;" class="btn-close" aria-label="Close">
             </button>
         </form>
 
