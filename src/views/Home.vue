@@ -6,10 +6,10 @@
                 <div :class="{toggleActive: editLesson}"
                 class="lessons-toggle">
                     <div :class="{editActive: editLesson}" class="lessons-toggle_btn" >
-                    <div class="lessons-edit" @click="editLesson = !editLesson" >
-                        <i class="bi bi-pencil" v-if="!editLesson"></i>
-                        <i class="bi bi-caret-right-fill" v-else></i>
-                    </div>
+                        <div class="lessons-edit" @click="editLesson = !editLesson" v-if="!descr" >
+                            <i class="bi bi-pencil" v-if="!editLesson"></i>
+                            <i class="bi bi-pencil" v-else></i>
+                        </div>
                     </div>
                 </div>
 
@@ -21,7 +21,7 @@
                 <div @click="showForm = !showForm"
                     v-if="!editLesson"
                     class=" btn-add">
-                    <i class="bi bi-file-plus">
+                    <i v-if="!descr" class="bi bi-file-plus">
                     </i>
                 </div>
                 <div @click="showForm = !showForm"
@@ -36,13 +36,15 @@
             :item='item'
             :lessons="lessons"
             :editLesson="editLesson"
+            :descr="descr"
             @cost-push="costPush"
             @cost-remove="costRemove"
             @remove-lesson="removeLesson"
             @move-item-up="moveItemUp"
             @move-item-down="moveItemDown"
             @change-day="changeDay"
-            @change-time-submit="changeTimeSubmit"> 
+            @change-time-submit="changeTimeSubmit"
+            @descr-bool="descrBool"> 
             </list-days>
 
             
@@ -111,6 +113,7 @@ export default {
             wallet:false,
             Sum: [],
             coin: false,
+            descr: false,
             week: [
                 {
                     "id": "1",
@@ -156,6 +159,9 @@ export default {
                 this.wallet = !this.wallet
                 this.coin = false
             }, 1000)
+        },
+        descrBool(){
+            this.descr =!this.descr
         },
         closeFormAddStudent(){
             this.showForm = false

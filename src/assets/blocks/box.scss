@@ -71,6 +71,7 @@
     border-radius: 4px ;
     // box-shadow: 2px 2px 1px #000, -2px -2px 1px #000;
     box-shadow: 2px 2px 2px #cfcfcf, -2px -2px 2px #e5e5e5;
+    transition: 0.1s all;
     &:nth-child(1){
         margin-top: 20px;
     }
@@ -103,7 +104,8 @@
 }
 
 .edit{
-    animation: flex 1s linear infinite;
+    animation: flex 1.5s linear infinite;
+    transition: 0.5s all;
 }
 
 .description{
@@ -156,13 +158,13 @@
         transform: rotate(0deg);
     }
     25%{
-        transform: rotate(-2deg);
+        transform: rotate(-1deg);
     }
     50%{
         transform: rotate(0deg);
     }
     75%{
-        transform: rotate(2deg);
+        transform: rotate(1deg);
     }
     100%{
         transform: rotate(0deg);

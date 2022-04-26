@@ -32,10 +32,11 @@
         font-size: 22px;
     }
     &-remove{
-        height: 3px;
+        height: 5px;
         width: 20px;
         background-color: var(--bs-red);
         position: absolute;
+        border-radius: 2px;
         top: 15px;
         right: 15px;
         cursor: pointer;

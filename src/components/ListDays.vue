@@ -97,11 +97,11 @@
 
 
 
-                        <div class="form-descr" @click="les.descr = !les.descr"
+                        <div class="form-descr" @click="$emit('descr-bool'),les.descr = !les.descr"
                             v-if="!editLesson">
                             <i class="bi bi-chat-left-quote"></i>
                         </div>
-                        <button @click="les.descr = !les.descr" v-if="les.descr === true"
+                        <button @click="$emit('descr-bool'),les.descr = !les.descr" v-if="les.descr === true"
                             type="button" class="btn-close descr" aria-label="Close">
                         </button>
                         
@@ -127,11 +127,13 @@ export default {
         editLesson:{
             type: Boolean,
             requared: true
+        },
+        descr:{
+            type: Boolean
         }
     },
     data() {
         return{
-            descr: false,
             newDescr: undefined,
             changeDay: null,
             newTimeLesson: null,
