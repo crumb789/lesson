@@ -30,7 +30,11 @@
     width: 10%;
     bottom: 0;
     border-radius:  4px 4px 4px 4px;
-    background-color: $done-color;
+    background-color: var(--bs-red);
     transition: 0.5s all;
     // z-index: 10;
+}
+
+.dividerDone{
+    background-color: $done-color;
 }
