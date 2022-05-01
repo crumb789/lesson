@@ -1,7 +1,7 @@
 <template>
     <div class="container-sm">
-        
         <div class="header">
+            {{color}}
             <div class="header-wrapper">
                 <div :class="{toggleActive: editLesson}"
                 class="lessons-toggle">
@@ -114,6 +114,7 @@ export default {
             Sum: [],
             coin: false,
             descr: false,
+            color: window.Telegram.WebApp.WebAppInitData,
             week: [
                 {
                     "id": "1",
