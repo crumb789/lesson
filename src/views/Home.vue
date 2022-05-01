@@ -1,7 +1,6 @@
 <template>
     <div class="container-sm">
         <div class="header">
-            {{color}}
             <div class="header-wrapper">
                 <div :class="{toggleActive: editLesson}"
                 class="lessons-toggle">
@@ -13,7 +12,7 @@
                     </div>
                 </div>
 
-                <h1>
+                <h1 @click="setThemeClass">
                     <div :style="{width: widthDivider + '%'}" :class="{dividerDone: widthDivider == 100}" class="divider"></div>
                     {{mainHeader}}
                 </h1>
@@ -114,7 +113,7 @@ export default {
             Sum: [],
             coin: false,
             descr: false,
-            color: window.Telegram.WebApp.WebAppInitData,
+            color: window.Telegram.WebApp.colorScheme,
             week: [
                 {
                     "id": "1",
@@ -220,7 +219,7 @@ export default {
             if (indexLes !== this.lessons.length   && indexLesPrev !== this.lessons.length ) {
                 [ this.lessons[indexLes], this.lessons[indexLesPrev] ] = [ this.lessons[indexLesPrev], this.lessons[indexLes] ];
             }
-        }
+        },
 
     },
     computed: {
