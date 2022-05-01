@@ -1,6 +1,7 @@
 <template>
     <div class="container-sm">
-        <div class="header">
+        <div class="header" @click="qwe">
+            {{firstName}}
             <div class="header-wrapper">
                 <div :class="{toggleActive: editLesson}"
                 class="lessons-toggle">
@@ -114,6 +115,7 @@ export default {
             coin: false,
             descr: false,
             color: window.Telegram.WebApp.colorScheme,
+            firstName: '',
             week: [
                 {
                     "id": "1",
@@ -220,6 +222,14 @@ export default {
                 [ this.lessons[indexLes], this.lessons[indexLesPrev] ] = [ this.lessons[indexLesPrev], this.lessons[indexLes] ];
             }
         },
+        qwe(){
+            // window.Telegram.WebApp.ready();
+            const initData = window.Telegram.WebApp.initData || ''
+            const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe || {};
+            console.log(initData, initDataUnsafe)
+            console.log(`Hi, ${initDataUnsafe.user.first_name}!`)
+            this.firstName = initDataUnsafe.user.first_name
+        }
 
     },
     computed: {
@@ -244,6 +254,7 @@ export default {
         //     return  this.salary.reduce((item, sum) => sum + item, 0)
             
         // }
+        
     },
     mounted(){
         if(localStorage.lessons){
